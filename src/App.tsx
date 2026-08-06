@@ -15,8 +15,9 @@ import { INITIAL_SONGS, DEFAULT_STATS } from './data/songs';
 function MainApp() {
   const { setSongsList } = useAudio();
 
-  const [songs, setSongs] = useState<Song[]>(INITIAL_SONGS);
+  const [songs, setSongs] = useState<Song[]>([]);
   const [stats, setStats] = useState<SiteStats>(DEFAULT_STATS);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [activeSection, setActiveSection] = useState('home');
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,22 +36,22 @@ function MainApp() {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
+        setIsLoading(true);
         const res = await fetch('/api/songs');
         if (res.ok) {
           const data = await res.json();
-          if (data.songs && data.songs.length > 0) {
+          if (Array.isArray(data.songs)) {
             setSongs(data.songs);
             setSongsList(data.songs);
           }
           if (data.stats) {
             setStats(data.stats);
           }
-        } else {
-          setSongsList(INITIAL_SONGS);
         }
       } catch (err) {
-        console.log('Using initial client song dataset:', err);
-        setSongsList(INITIAL_SONGS);
+        console.log('Error fetching songs from API:', err);
+      } finally {
+        setIsLoading(false);
       }
     };
 

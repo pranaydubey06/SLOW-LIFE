@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Instagram, Music, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Instagram, Music, Sparkles, Disc, Headphones, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SiteStats, Song } from '../types';
 import { useAudio } from '../context/AudioContext';
@@ -195,14 +195,32 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="pt-6 border-t border-[#ECECEC] max-w-lg"
+              className="pt-6 border-t border-[#ECECEC] grid grid-cols-3 gap-3 sm:gap-6 max-w-lg"
             >
               <div className="space-y-1">
                 <div className="flex items-center space-x-1.5 text-[#111111]">
                   <Music size={16} className="text-[#111111]" />
-                  <span className="font-heading text-2xl sm:text-3xl font-bold">{stats.totalSongs}</span>
+                  <span className="font-heading text-2xl sm:text-3xl font-bold">
+                    {songs.length > 0 ? songs.length : (stats.totalSongs || 0)}
+                  </span>
                 </div>
                 <p className="text-xs text-[#7A7A7A] font-medium">Total Songs</p>
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex items-center space-x-1.5 text-[#111111]">
+                  <Sparkles size={16} className="text-amber-600" />
+                  <span className="font-heading text-2xl sm:text-3xl font-bold">100%</span>
+                </div>
+                <p className="text-xs text-[#7A7A7A] font-medium">Curated Vibe</p>
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex items-center space-x-1.5 text-[#111111]">
+                  <Headphones size={16} className="text-[#111111]" />
+                  <span className="font-heading text-2xl sm:text-3xl font-bold">HD</span>
+                </div>
+                <p className="text-xs text-[#7A7A7A] font-medium">Lossless Audio</p>
               </div>
             </motion.div>
 
@@ -299,7 +317,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#111111]" />
                       </span>
                       <span className="text-[10px] font-bold tracking-widest text-[#111111] uppercase font-heading">
-                        NOW CURATING ({currentIndex + 1}/{playlist.length})
+                        {playlist.length > 0 ? `NOW CURATING (${currentIndex + 1}/${playlist.length})` : 'SLOW LIFE MUSIC'}
                       </span>
                     </div>
 
@@ -351,23 +369,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <div className="flex items-start justify-between">
                       <div>
                         <span className="text-[11px] font-semibold text-[#DCC6A0] uppercase tracking-wider font-heading">
-                          {activeHeroSong?.category || 'Timeless Classic'}
+                          {activeHeroSong?.category || 'Music'}
                         </span>
                         <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#111111] line-clamp-1">
-                          {activeHeroSong?.title || 'Lag Jaa Gale'}
+                          {activeHeroSong?.title || 'No Song Uploaded Yet'}
                         </h3>
                         <p className="text-xs sm:text-sm text-[#7A7A7A] font-medium">
-                          {activeHeroSong?.artist || 'Lata Mangeshkar'}
+                          {activeHeroSong?.artist || 'Curator Studio'}
                         </p>
                       </div>
 
                       <span className="text-xs text-[#7A7A7A] font-mono border border-[#ECECEC] px-2.5 py-1 rounded-full">
-                        {activeHeroSong?.duration || '04:15'}
+                        {activeHeroSong?.duration || '--:--'}
                       </span>
                     </div>
 
                     <p className="text-xs text-[#7A7A7A] line-clamp-2 pt-1 font-normal border-t border-[#ECECEC]/60">
-                      {activeHeroSong?.description || 'A timeless melody capturing the essence of unforgettable moments.'}
+                      {activeHeroSong?.description || 'Upload your favorite songs directly from the mobile Curator Studio.'}
                     </p>
 
                     {/* Clean Dot Indicators (No progress bar) */}

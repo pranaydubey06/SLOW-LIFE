@@ -124,12 +124,11 @@ export async function getSongsAndStats(): Promise<{ songs: Song[]; stats: SiteSt
 
     const total = songsList.length;
     const favs = songsList.filter(s => s.isFavorite).length;
-    const spotifyCount = songsList.filter(s => !!s.spotifyUrl).length;
 
     const stats: SiteStats = {
-      totalSongs: Math.max(total, 126),
+      totalSongs: total,
       favoriteSongs: favs,
-      spotifyLinks: Math.max(spotifyCount, 62),
+      spotifyLinks: 0,
       curatorNote: dbStats?.curator_note || fallbackStats.curatorNote || 'Welcome to SLOW LIFE music curation.',
       instagramHandle: dbStats?.instagram_handle || fallbackStats.instagramHandle || 'pranaydubey06',
     };

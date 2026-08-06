@@ -56,11 +56,11 @@ export default async function handler(req: any, res: any) {
         const { title, artist, coverUrl, category, spotifyUrl, youtubeUrl, audioUrl, description, isFavorite } = body || {};
         if (typeof title === 'string') updates.title = title.trim().slice(0, 150);
         if (typeof artist === 'string') updates.artist = artist.trim().slice(0, 150);
-        if (typeof coverUrl === 'string') updates.coverUrl = coverUrl.trim().slice(0, 500);
+        if (typeof coverUrl === 'string') updates.coverUrl = coverUrl.trim();
         if (category !== undefined) updates.category = getValidCategory(category);
-        if (typeof spotifyUrl === 'string') updates.spotifyUrl = spotifyUrl.trim().slice(0, 500);
-        if (typeof youtubeUrl === 'string') updates.youtubeUrl = youtubeUrl.trim().slice(0, 500);
-        if (typeof audioUrl === 'string') updates.audioUrl = audioUrl.trim().slice(0, 500);
+        if (typeof spotifyUrl === 'string') updates.spotifyUrl = spotifyUrl.trim();
+        if (typeof youtubeUrl === 'string') updates.youtubeUrl = youtubeUrl.trim();
+        if (typeof audioUrl === 'string') updates.audioUrl = audioUrl.trim();
         if (typeof description === 'string') updates.description = description.trim().slice(0, 1000);
         if (typeof isFavorite === 'boolean') updates.isFavorite = isFavorite;
       } else {

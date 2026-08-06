@@ -21,12 +21,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  if (req.body && typeof req.body === 'object') {
-    return next();
-  }
-  express.json({ limit: '10mb' })(req, res, next);
-});
+// Body parsing middleware with 100MB payload limit for audio and image data URLs
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
+
 
 // Route handlers delegating to Vercel serverless functions
 app.all(['/api/health', '/health'], (req, res) => healthHandler(req, res));
