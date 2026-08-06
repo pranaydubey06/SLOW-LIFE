@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { generateAdminToken, getTokenSecret } from '../lib/auth';
+import { generateAdminToken } from '../lib/auth';
 import { setCorsHeaders } from '../lib/cors';
 
 export default async function handler(req: any, res: any) {
@@ -36,8 +36,6 @@ export default async function handler(req: any, res: any) {
         message: 'ADMIN_PASSWORD environment variable is not configured on the server.',
       });
     }
-
-    const tokenSecret = getTokenSecret();
 
     const inputTrimmed = password.trim();
     const configTrimmed = adminPassword.trim();
