@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Instagram, Music, Heart, Disc, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Instagram, Music, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SiteStats, Song } from '../types';
 import { useAudio } from '../context/AudioContext';
@@ -195,7 +195,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="pt-6 border-t border-[#ECECEC] grid grid-cols-3 gap-4 sm:gap-8 max-w-lg"
+              className="pt-6 border-t border-[#ECECEC] max-w-lg"
             >
               <div className="space-y-1">
                 <div className="flex items-center space-x-1.5 text-[#111111]">
@@ -203,22 +203,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <span className="font-heading text-2xl sm:text-3xl font-bold">{stats.totalSongs}</span>
                 </div>
                 <p className="text-xs text-[#7A7A7A] font-medium">Total Songs</p>
-              </div>
-
-              <div className="space-y-1">
-                <div className="flex items-center space-x-1.5 text-[#111111]">
-                  <Heart size={16} className="text-rose-500 fill-rose-500" />
-                  <span className="font-heading text-2xl sm:text-3xl font-bold">{stats.favoriteSongs}</span>
-                </div>
-                <p className="text-xs text-[#7A7A7A] font-medium">Favorite Songs</p>
-              </div>
-
-              <div className="space-y-1">
-                <div className="flex items-center space-x-1.5 text-[#111111]">
-                  <Disc size={16} className="text-[#111111]" />
-                  <span className="font-heading text-2xl sm:text-3xl font-bold">{stats.spotifyLinks}</span>
-                </div>
-                <p className="text-xs text-[#7A7A7A] font-medium">Spotify Links</p>
               </div>
             </motion.div>
 
