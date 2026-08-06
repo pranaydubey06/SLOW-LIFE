@@ -1,7 +1,7 @@
-import { getSongsAndStats, insertSong } from './lib/supabase';
-import { isAdminAuthenticated } from './lib/auth';
-import { setCorsHeaders } from './lib/cors';
-import { Song, SongCategory } from '../src/types';
+import { getSongsAndStats, insertSong } from './lib/supabase.js';
+import { isAdminAuthenticated } from './lib/auth.js';
+import { setCorsHeaders } from './lib/cors.js';
+import { Song, SongCategory } from '../src/types.js';
 
 const VALID_CATEGORIES: SongCategory[] = ['Old', 'Sad', 'Ghazal', 'Hindi', 'Romantic', 'Bengali', 'Classics'];
 

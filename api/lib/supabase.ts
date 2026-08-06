@@ -1,6 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { Song, SiteStats, SongCategory } from '../../src/types';
-import { INITIAL_SONGS, DEFAULT_STATS } from '../../src/data/songs';
+import { Song, SiteStats, SongCategory } from '../../src/types.js';
+import { INITIAL_SONGS, DEFAULT_STATS } from '../../src/data/songs.js';
 
 function getEnvVar(names: string[]): string {
   for (const name of names) {

@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import { generateAdminToken } from '../lib/auth';
-import { setCorsHeaders } from '../lib/cors';
+import { generateAdminToken } from '../lib/auth.js';
+import { setCorsHeaders } from '../lib/cors.js';
 
 export default async function handler(req: any, res: any) {
   setCorsHeaders(req, res);

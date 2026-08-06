@@ -1,6 +1,6 @@
-import { getSongsAndStats, updateStats } from './lib/supabase';
-import { isAdminAuthenticated } from './lib/auth';
-import { setCorsHeaders } from './lib/cors';
+import { getSongsAndStats, updateStats } from './lib/supabase.js';
+import { isAdminAuthenticated } from './lib/auth.js';
+import { setCorsHeaders } from './lib/cors.js';
 
 export default async function handler(req: any, res: any) {
   setCorsHeaders(req, res);

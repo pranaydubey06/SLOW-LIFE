@@ -1,7 +1,7 @@
-import { getSongsAndStats, updateSong, deleteSong } from '../lib/supabase';
-import { getAdminToken, verifyAdminToken, isAdminAuthenticated } from '../lib/auth';
-import { setCorsHeaders } from '../lib/cors';
-import { SongCategory } from '../../src/types';
+import { getSongsAndStats, updateSong, deleteSong } from '../lib/supabase.js';
+import { getAdminToken, verifyAdminToken, isAdminAuthenticated } from '../lib/auth.js';
+import { setCorsHeaders } from '../lib/cors.js';
+import { SongCategory } from '../../src/types.js';
 
 const VALID_CATEGORIES: SongCategory[] = ['Old', 'Sad', 'Ghazal', 'Hindi', 'Romantic', 'Bengali', 'Classics'];
 

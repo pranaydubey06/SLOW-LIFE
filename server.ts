@@ -1,12 +1,12 @@
 import express from 'express';
 import path from 'path';
-import loginHandler from './api/admin/login';
-import verifyHandler from './api/admin/verify';
-import healthHandler from './api/health';
-import songsHandler from './api/songs';
-import songByIdHandler from './api/songs/[id]';
-import statsHandler from './api/stats';
-import { setCorsHeaders } from './api/lib/cors';
+import loginHandler from './api/admin/login.js';
+import verifyHandler from './api/admin/verify.js';
+import healthHandler from './api/health.js';
+import songsHandler from './api/songs.js';
+import songByIdHandler from './api/songs/[id].js';
+import statsHandler from './api/stats.js';
+import { setCorsHeaders } from './api/lib/cors.js';
 
 const PORT = 3000;
 const app = express();
