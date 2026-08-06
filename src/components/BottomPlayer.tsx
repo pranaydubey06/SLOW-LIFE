@@ -225,70 +225,81 @@ export const BottomPlayer: React.FC<BottomPlayerProps> = ({ onToggleFavorite }) 
         </div>
 
         {/* MOBILE LAYOUT (less than md) */}
-        <div className="flex md:hidden items-center justify-between p-3.5 pt-4">
-          {/* Left Side: Clickable Artwork and Details to open PlayerModal */}
+        <div className="flex md:hidden flex-col p-2.5 pt-2">
+          {/* Subtle Mobile Drag Indicator Handle */}
           <div
             onClick={() => openModal(currentSong)}
-            className="flex items-center space-x-3 flex-1 min-w-0 cursor-pointer"
-          >
-            <div className="w-11 h-11 rounded-[12px] overflow-hidden bg-stone-100 flex-shrink-0 shadow-sm">
-              <img
-                src={currentSong.coverUrl}
-                alt={currentSong.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="min-w-0 flex-1">
-              <h4 className="font-heading text-xs sm:text-sm font-bold text-[#111111] truncate">
-                {currentSong.title}
-              </h4>
-              <p className="text-[10px] sm:text-xs text-[#7A7A7A] truncate font-medium">
-                {currentSong.artist}
-              </p>
-            </div>
-          </div>
+            className="w-8 h-1 bg-stone-300 rounded-full mx-auto my-1 cursor-pointer"
+          />
 
-          {/* Right Side: Interactive Play & Navigation Controls */}
-          <div className="flex items-center space-x-1.5 flex-shrink-0 pl-2">
-            {onToggleFavorite && (
+          <div className="flex items-center justify-between">
+            {/* Left Side: Clickable Artwork and Details to open PlayerModal */}
+            <div
+              onClick={() => openModal(currentSong)}
+              className="flex items-center space-x-3 flex-1 min-w-0 cursor-pointer active:opacity-80 transition-opacity"
+            >
+              <div className="w-11 h-11 rounded-[12px] overflow-hidden bg-stone-100 flex-shrink-0 shadow-sm relative">
+                <img
+                  src={currentSong.coverUrl}
+                  alt={currentSong.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="font-heading text-xs font-bold text-[#111111] truncate">
+                  {currentSong.title}
+                </h4>
+                <p className="text-[10px] text-[#7A7A7A] truncate font-medium">
+                  {currentSong.artist}
+                </p>
+              </div>
+            </div>
+
+            {/* Right Side: Interactive Play & Navigation Controls */}
+            <div className="flex items-center space-x-1 flex-shrink-0 pl-1">
+              {onToggleFavorite && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFavorite(currentSong.id);
+                  }}
+                  className="p-2.5 text-[#111111] active:scale-90 transition-transform cursor-pointer"
+                  title="Favorite"
+                >
+                  <Heart
+                    size={18}
+                    className={currentSong.isFavorite ? 'fill-rose-500 text-rose-500' : 'text-[#111111]'}
+                  />
+                </button>
+              )}
+
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  onToggleFavorite(currentSong.id);
+                  togglePlay();
                 }}
-                className="p-2 text-[#111111] active:scale-90 transition-transform"
+                className="w-10 h-10 rounded-full bg-[#111111] text-white flex items-center justify-center shadow-sm active:scale-95 transition-transform cursor-pointer"
+                title={isPlaying ? 'Pause' : 'Play'}
               >
-                <Heart
-                  size={18}
-                  className={currentSong.isFavorite ? 'fill-rose-500 text-rose-500' : 'text-[#111111]'}
-                />
+                {isPlaying ? (
+                  <Pause size={16} className="fill-white" />
+                ) : (
+                  <Play size={16} className="fill-white ml-0.5" />
+                )}
               </button>
-            )}
 
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                togglePlay();
-              }}
-              className="w-10 h-10 rounded-full bg-[#111111] text-white flex items-center justify-center shadow-sm active:scale-95 transition-transform"
-            >
-              {isPlaying ? (
-                <Pause size={16} className="fill-white" />
-              ) : (
-                <Play size={16} className="fill-white ml-0.5" />
-              )}
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                playNext();
-              }}
-              className="p-2 text-[#111111] active:scale-90 transition-transform"
-            >
-              <SkipForward size={18} className="fill-[#111111]" />
-            </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  playNext();
+                }}
+                className="p-2.5 text-[#111111] active:scale-90 transition-transform cursor-pointer"
+                title="Next song"
+              >
+                <SkipForward size={18} className="fill-[#111111]" />
+              </button>
+            </div>
           </div>
         </div>
       </motion.div>
