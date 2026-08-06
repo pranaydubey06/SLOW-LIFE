@@ -1,0 +1,6 @@
+{
+  "name": "SLOW LIFE",
+  "description": "A personal, timeless music collection curated with love.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

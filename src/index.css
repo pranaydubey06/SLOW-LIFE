@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #F7F7F5;
+    color: #111111;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom Utilities for Editorial Aesthetics */
+.font-heading {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+.bg-warm-white {
+  background-color: #F7F7F5;
+}
+
+.bg-warm-hover {
+  background-color: #F3EFE8;
+}
+
+.bg-warm-accent {
+  background-color: #DCC6A0;
+}
+
+.text-secondary {
+  color: #7A7A7A;
+}
+
+.border-subtle {
+  border-color: #ECECEC;
+}
+
+/* Dotted Pattern Background */
+.dotted-pattern {
+  background-image: radial-gradient(#d1d1cb 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+.dotted-pattern-sm {
+  background-image: radial-gradient(#d1d1cb 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* 3D Tilt perspective styling */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Soft Lux Shadows */
+.shadow-soft {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-float {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-glass {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F7F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d0c7;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b5b0a3;
+}
+
+/* Audio Player Range Slider Styling */
+input[type="range"] {
+  accent-color: #111111;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #111111;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
